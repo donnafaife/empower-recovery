@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import './App.css'
 import glenPhoto from './assets/glen-monteiro.jpg'
+import telehealth from './assets/telehealth.jpg'
 
 function App() {
 
@@ -78,7 +79,7 @@ function App() {
         <section id="about" className="about container">
           <div className="about-inner card-block">
             <div className="about-visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c0?w=800&h=1066&fit=crop&auto=format" alt="Calm nature scene" />
+              <img src={telehealth} alt="Telehealth visit" />
             </div>
 
             <div className="about-text">
