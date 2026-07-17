@@ -199,7 +199,7 @@ function App() {
 
               <p className="team-text">In addition to patient care, Dr. Monteiro has led multidisciplinary healthcare teams, mentored physicians and advanced practice providers, and championed quality improvement initiatives. His commitment to clinical excellence earned him recognition as Best Attending Physician at the Roseburg Family Medicine Residency Program.</p>
 
-              <p className="team-text">He completed residency training in Family Medicine (VCU) and Preventive Medicine (UMDNJ), followed by a Clinical Hospital Medicine Fellowship at UT Health San Antonio. He also earned a Master of Public Health from the University of Medicine &amp; Dentistry of New Jersey.</p>
+              <p className="team-text">He completed residency training in Family Medicine (Virginia Commonwealth University) and Preventive Medicine (University of Medicine &amp; Dentistry of New Jersey), followed by a Clinical Hospital Medicine Fellowship at UT Health San Antonio. He also earned a Master of Public Health from the University of Medicine &amp; Dentistry of New Jersey.</p>
 
               <p className="team-text">Dr. Monteiro is board certified by the American Board of Preventive Medicine in Addiction Medicine and Preventive Medicine &amp; Public Health, and by the American Board of Family Medicine. He is licensed to practice medicine in Texas, Oregon, and Virginia.</p>
 
