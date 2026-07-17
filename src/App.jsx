@@ -1,9 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import glenPhoto from './assets/glen-monteiro.jpg'
 import telehealth from './assets/telehealth.jpg'
 
 function App() {
+
+  const [showSplash, setShowSplash] = useState(true)
+
 
   useEffect(() => {
     const header = document.querySelector('.site-header')
@@ -18,6 +21,17 @@ function App() {
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  if (showSplash) {
+    return (
+      <div className="splash" role="dialog" aria-label="Welcome">
+        <div className="splash-inner container">
+          <img className="splash-logo" src="/empower-logo.png" alt="Empower Recovery" />
+          <button className="btn btn-primary splash-button" onClick={() => setShowSplash(false)}>Click here</button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="page-root">
