@@ -1,19 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import glenPhoto from './assets/glen-monteiro.jpg'
 
 function App() {
-  function handleBook() {
-    alert('Thanks — we will contact you to book your appointment.')
-  }
-
-  const [formSubmitted, setFormSubmitted] = useState(false)
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    setFormSubmitted(true)
-    // In a real app, send form data to the server here
-  }
 
   useEffect(() => {
     const header = document.querySelector('.site-header')
@@ -39,7 +28,7 @@ function App() {
             <a href="#about">About Us</a>
             <a href="#services">What We Offer</a>
             <a href="#team">Our Team</a>
-            <button className="nav-cta" onClick={handleBook}>Book An Appointment</button>
+            <span className="nav-cta">Information about our upcoming practice will be available shortly.</span>
           </nav>
         </div>
       </header>
@@ -58,13 +47,9 @@ function App() {
             </p>
 
             <div className="hero-actions">
-              <button className="btn btn-primary" onClick={handleBook} aria-label="Book a Consultation">
-                <span>Book a Consultation</span>
-                <svg className="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
+              <div className="btn btn-primary" aria-label="Practice information coming soon">
+                <span>Information about our upcoming practice will be available shortly.</span>
+              </div>
 
               <a className="btn btn-ghost" href="#about" aria-label="Learn About Us">Learn About Us</a>
             </div>
@@ -211,66 +196,14 @@ function App() {
         <section id="booking" className="booking-section">
           <div className="container booking-inner">
             <div className="booking-left" aria-hidden>
-              <p className="booking-eyebrow">Book An Appointment</p>
-              <h2 className="booking-headline">Your first step starts here.</h2>
-              <p className="booking-copy">Reaching out takes courage. Our intake team responds within 24 hours to schedule your confidential consultation. All calls and messages are private.</p>
+              <p className="booking-eyebrow">Practice information</p>
+              <h2 className="booking-headline">Coming soon.</h2>
+              <p className="booking-copy">Information about our upcoming practice will be available shortly.</p>
             </div>
 
             <div className="booking-right">
               <div className="booking-card">
-                {/** Form or confirmation goes here */}
-                {formSubmitted ? (
-                  <div className="booking-confirm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#b87333" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"></path>
-                    </svg>
-                    <h3 className="confirm-title">Thanks — request sent</h3>
-                    <p className="confirm-copy">We'll contact you shortly to confirm your appointment.</p>
-                  </div>
-                ) : (
-                  <form className="booking-form" onSubmit={handleSubmit}>
-                    <label className="field">
-                      <span className="sr-only">Full Name</span>
-                      <input name="name" type="text" placeholder="Full Name" required className="form-input" />
-                    </label>
-
-                    <label className="field">
-                      <span className="sr-only">Email Address</span>
-                      <input name="email" type="email" placeholder="Email Address" required className="form-input" />
-                    </label>
-
-                    <label className="field">
-                      <span className="sr-only">Phone Number</span>
-                      <input name="phone" type="tel" placeholder="Phone Number" required className="form-input" />
-                    </label>
-
-                    <label className="field">
-                      <span className="sr-only">Preferred Date</span>
-                      <input name="date" type="date" className="form-input" />
-                    </label>
-
-                    <label className="field">
-                      <span className="sr-only">Reason for Visit</span>
-                      <select name="reason" className="form-input" required>
-                        <option value="">Reason for visit</option>
-                        <option>New patient intake</option>
-                        <option>Medication-assisted treatment</option>
-                        <option>Mental health consultation</option>
-                        <option>Follow-up / Prescription refill</option>
-                        <option>Family support consultation</option>
-                        <option>Other</option>
-                      </select>
-                    </label>
-
-                    <button type="submit" className="btn-submit">
-                      <span>Request Appointment</span>
-                      <svg className="chev" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-                  </form>
-                )}
+                <p className="confirm-copy">Information about our upcoming practice will be available shortly.</p>
               </div>
             </div>
           </div>
