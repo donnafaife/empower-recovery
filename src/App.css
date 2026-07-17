@@ -551,7 +551,7 @@ body, .page-root {
 
 .about-body {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  font-size: 14px; /* text-sm */
+  font-size: 14px;
   color: #6b7c71;
   line-height: 1.8;
   margin: 0 0 12px 0;
@@ -559,15 +559,31 @@ body, .page-root {
 
 .about-subhead {
   font-family: 'DM Serif Display', serif;
-  font-size: 16px; /* text-base */
+  font-size: 16px;
   color: var(--primary);
   margin-top: 8px;
   margin-bottom: 12px;
 }
 
 .features { list-style: none; padding: 0; margin: 0 0 16px 0; display: grid; gap: 8px; }
-.features li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-h); }
-.features li::before { content: ''; width: 10px; height: 10px; border-radius: 9999px; background: var(--primary); display: inline-block; margin-top: 8px; }
+.features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: #173a2e;
+  line-height: 1.6;
+}
+.features li::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #1a4a3a;
+  display: inline-block;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
 
 .about-closing { font-style: italic; color: var(--primary); font-size: 14px; font-weight: 600; margin-top: 8px; }
 

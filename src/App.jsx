@@ -85,29 +85,30 @@ function App() {
               <p className="about-eyebrow">About Us</p>
               <h2 className="about-headline">Medicine, compassion, and community — all in one place.</h2>
 
-              <p className="about-body">At <strong>Empower Recovery</strong>, we believe that every person deserves the opportunity to reclaim their life with dignity, respect, and expert medical care. Addiction is not a reflection of character or willpower—it is a complex medical condition that responds best to compassionate, evidence-based treatment.</p>
+              <p className="about-body">At <strong>Empower Recovery</strong>, we believe everyone deserves access to compassionate, expert addiction treatment—wherever they are in Texas. Through secure, virtual visits, we make high-quality, evidence-based care convenient, private, and accessible from the comfort of home.</p>
 
-              <p className="about-body">Founded by a team of physicians and nurse practitioners dedicated to addiction medicine since <strong>2025</strong>, our practice was created to make high-quality, personalized care accessible to individuals and families seeking lasting recovery. Our clinical experience has shown us that successful treatment is built on more than medication alone—it requires trust, understanding, and a strong support system.</p>
+              <p className="about-body">Addiction is not a reflection of character or willpower. It is a complex medical condition that responds best to personalized, evidence-based treatment delivered with compassion and respect.</p>
 
-              <p className="about-body">Our approach brings together the science of modern addiction medicine with genuine human connection. Every treatment plan is tailored to the individual, recognizing that no two recovery journeys are the same. We work alongside our patients, celebrating progress, navigating setbacks, and providing the guidance needed to build a healthier future.</p>
+              <p className="about-body">Founded by a physician and nurse practitioner dedicated to addiction medicine, <strong>Empower Recovery</strong> was created to remove barriers to care and make recovery more accessible. Our experience has shown that lasting recovery is built on more than medication alone—it requires trust, understanding, ongoing support, and a treatment plan tailored to each individual's needs.</p>
 
-              <p className="about-body">At Empower Recovery, we focus on treating the whole person. We address the physical, emotional, and social aspects of addiction through an integrated model of care that supports long-term wellness rather than short-term solutions.</p>
+              <p className="about-body">Our virtual care model combines the science of modern addiction medicine with meaningful human connection. Every patient receives an individualized treatment plan designed around their goals, lifestyle, and stage of recovery. We partner with our patients through every step of the journey—celebrating progress, navigating challenges, and providing the guidance needed to build a healthier future.</p>
+
+              <p className="about-body">We focus on treating the whole person by addressing the medical, emotional, and behavioral aspects of addiction. Through secure telehealth visits, we provide convenient, confidential care without the need to travel, helping patients stay connected to treatment wherever life takes them.</p>
 
               <h4 className="about-subhead">What Sets Us Apart</h4>
               <ul className="features">
                 <li>Physician- and nurse practitioner-led addiction treatment</li>
-                <li>Evidence-based care grounded in the latest medical research</li>
-                <li>Compassionate, respectful, and judgment-free environment</li>
-                <li>Personalized treatment plans designed around each individual's goals</li>
-                <li>Integrated medical care with behavioral health support</li>
-                <li>Care for both individuals and the families who support them</li>
-                <li>Flexible appointment options, including telehealth and in-person visits</li>
+                <li>100% secure virtual care across Texas</li>
+                <li>Evidence-based treatment grounded in the latest medical research</li>
+                <li>Compassionate, respectful, and judgment-free care</li>
+                <li>Personalized treatment plans designed around your recovery goals</li>
+                <li>Medication-Assisted Treatment (MAT), when clinically appropriate</li>
+                <li>Flexible scheduling that fits your life</li>
+                <li>Convenient care from the privacy of your home</li>
                 <li>Acceptance of most major insurance plans</li>
               </ul>
 
-              <p className="about-body">Recovery is not simply about overcoming addiction—it's about rebuilding confidence, restoring relationships, and creating a life filled with purpose. Whether you're seeking help for yourself or someone you love, our team is committed to walking beside you every step of the journey.</p>
-
-              <p className="about-closing">Medicine. Compassion. Community. Together, they create the foundation for lasting recovery.</p>
+              <p className="about-body">Recovery is about more than overcoming addiction—it's about rebuilding health, restoring relationships, and creating a life filled with purpose. Whether you're seeking help for yourself or someone you love, we're committed to providing expert, compassionate care that supports lasting recovery—one virtual visit at a time.</p>
             </div>
           </div>
         </section>
@@ -183,7 +184,7 @@ function App() {
 
               <p className="team-text">He earned his medical degree from Government Medical College in India, a Master of Public Health from the University of Medicine &amp; Dentistry of New Jersey, and completed residency training in Family Medicine and Preventive Medicine, followed by a Clinical Hospital Medicine Fellowship at UT Health San Antonio.</p>
 
-              <p className="team-text">Dr. Monteiro is board certified in Addiction Medicine, Preventive Medicine &amp; Public Health, and Family Medicine.</p>
+              <p className="team-text">Dr. Monteiro is board certified by the American Board of Preventive Medicine in Addiction Medicine and Preventive Medicine &amp; Public Health, and by the American Board of Family Medicine. He is licensed to practice medicine in Texas, Oregon, and Virginia.</p>
 
               <p className="team-text">At Empower Recovery, Dr. Monteiro's mission is to provide expert, compassionate care that empowers individuals and families to achieve lasting recovery.</p>
             </div>
