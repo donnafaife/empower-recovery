@@ -163,30 +163,29 @@ function App() {
         <section id="team" className="team-section">
           <div className="container team-inner">
             <div className="team-photo" aria-hidden>
-              <img src={glenPhoto} alt="Dr. Glen Monteiro" />
+              <img className="aspect-[3/4] rounded-2xl object-cover object-top max-w-md" src={glenPhoto} alt="Dr. Glen Monteiro" />
             </div>
 
             <div className="team-bio">
-              <p className="team-eyebrow">Our Team</p>
-              <h2 className="team-name">Meet Dr. Glen Monteiro,<br /><span className="team-credentials">MD, MPH</span></h2>
+              <p className="team-label">Our Team</p>
+              <h2 className="team-heading">
+                <span className="team-heading-line">Meet Dr. Glen Monteiro,</span>
+                <span className="team-heading-line team-heading-accent">MD, MPH</span>
+              </h2>
+              <p className="team-subtitle">Founder &amp; Medical Director</p>
+              <p className="team-text">Dr. Glen Monteiro is a board-certified physician specializing in Addiction Medicine, Family Medicine, and Preventive Medicine &amp; Public Health. With over 15 years of clinical experience, he is dedicated to helping individuals overcome substance use disorders through compassionate, evidence-based care.</p>
 
+              <p className="team-text">He believes addiction is a treatable medical condition and partners with each patient to develop a personalized treatment plan that supports long-term recovery. His approach emphasizes respect, trust, and meeting patients where they are.</p>
 
+              <p className="team-text">Dr. Monteiro has cared for patients across a wide range of healthcare settings, including outpatient clinics, residential treatment programs, opioid treatment programs, hospitals, correctional facilities, and academic medical centers. He has served as Medical Director for multiple Medication-Assisted Treatment (MAT) programs, expanding access to effective treatment for opioid and alcohol use disorders.</p>
 
-              <p className="team-text">Dr. Glen Monteiro is a <strong>board-certified physician</strong> specializing in <strong>Addiction Medicine</strong>, <strong>Family Medicine</strong>, and <strong>Preventive Medicine &amp; Public Health</strong>. With over <strong>15 years</strong> of clinical experience, he has dedicated his career to helping individuals overcome substance use disorders through compassionate, evidence-based care.</p>
+              <p className="team-text">In addition to patient care, Dr. Monteiro has led multidisciplinary healthcare teams, mentored physicians and advanced practice providers, and championed quality improvement initiatives. His commitment to clinical excellence earned him recognition as <strong>Best Attending Physician</strong> at the Roseburg Family Medicine Residency Program.</p>
 
-              <p className="team-text">Dr. Monteiro believes that addiction is a treatable medical condition that requires individualized treatment, respect, and long-term support. His philosophy centers on meeting patients where they are, building trusting relationships, and developing personalized treatment plans that promote lasting recovery and improved quality of life.</p>
+              <p className="team-text">He earned his medical degree from Government Medical College in India, a Master of Public Health from the University of Medicine &amp; Dentistry of New Jersey, and completed residency training in Family Medicine and Preventive Medicine, followed by a Clinical Hospital Medicine Fellowship at UT Health San Antonio.</p>
 
-              <p className="team-text">Throughout his career, Dr. Monteiro has cared for patients in a wide variety of healthcare settings, including <strong>federally qualified health centers</strong>, <strong>residential treatment programs</strong>, <strong>opioid treatment programs</strong>, correctional healthcare facilities, hospitals, and academic medical institutions. He has served as Medical Director for multiple <strong>Medication-Assisted Treatment (MAT)</strong> programs, helping expand access to life-saving treatment for individuals living with opioid and alcohol use disorders.</p>
+              <p className="team-text">Dr. Monteiro is board certified by the American Board of Preventive Medicine in Addiction Medicine and Preventive Medicine &amp; Public Health, and by the American Board of Family Medicine. He is licensed to practice medicine in Texas, Oregon, and Virginia.</p>
 
-              <p className="team-text">In addition to direct patient care, Dr. Monteiro has held leadership roles overseeing multidisciplinary healthcare teams, mentoring physicians, nurse practitioners, physician assistants, and medical residents, and leading initiatives focused on quality improvement and patient safety. His dedication to clinical excellence and medical education earned him recognition as <strong>Best Attending Physician</strong> at the Roseburg Family Medicine Residency Program.</p>
-
-              <p className="team-text">Dr. Monteiro earned his medical degree from <strong>Government Medical College, Maharashtra, India</strong>, followed by a <strong>Master of Public Health in Quantitative Methods</strong> from the <strong>University of Medicine &amp; Dentistry of New Jersey</strong>. He completed residency training in <strong>Family Medicine</strong> at <strong>Virginia Commonwealth University</strong> and <strong>Preventive Medicine</strong> at the <strong>University of Medicine &amp; Dentistry of New Jersey</strong>. He subsequently completed a Clinical Hospital Medicine Fellowship at the <strong>University of Texas Health Science Center at San Antonio</strong>.</p>
-
-              <p className="team-text">He is board certified by the <strong>American Board of Preventive Medicine</strong> in Addiction Medicine and General Preventive Medicine &amp; Public Health, as well as by the <strong>American Board of Family Medicine</strong>. He is licensed to practice medicine in <strong>Texas</strong>, <strong>Oregon</strong>, and <strong>Virginia</strong>.</p>
-
-              <p className="team-text">Beyond clinical practice, Dr. Monteiro has contributed to medical research, published peer-reviewed articles, presented at national conferences, and participated in humanitarian medical missions and community service initiatives.</p>
-
-              <p className="team-closing">At Empower Recovery, Dr. Monteiro's mission is to provide every patient with expert medical care delivered with compassion, dignity, and hope, empowering individuals and families to achieve lasting recovery and healthier lives.</p>
+              <p className="team-text">At Empower Recovery, Dr. Monteiro's mission is to provide expert, compassionate care that empowers individuals and families to achieve lasting recovery.</p>
             </div>
           </div>
         </section>
