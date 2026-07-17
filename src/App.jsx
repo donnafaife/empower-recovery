@@ -23,7 +23,9 @@ function App() {
     <div className="page-root">
       <header className="site-header">
         <div className="container header-inner">
-          <a className="logo" href="#">Empower Recovery</a>
+          <a className="logo" href="/">
+            <img src="/empower-logo.png" alt="Empower Recovery" />
+          </a>
           <nav className="main-nav" aria-label="Main navigation">
             <a href="#">Home</a>
             <a href="#about">About Us</a>
