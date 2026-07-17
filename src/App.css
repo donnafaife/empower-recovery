@@ -599,22 +599,51 @@ body, .page-root {
 
 /* Our Team section */
 .team-section { background: #fbf6ef; padding: 56px 16px; }
-.team-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 32px; align-items: start; }
-.team-photo img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; border-radius: 12px; box-shadow: 0 8px 20px rgba(10,10,10,0.08); }
-.team-eyebrow { color: var(--muted); text-transform: uppercase; font-size: 12px; letter-spacing: 1.6px; margin-bottom: 8px; }
-.team-name { font-family: 'DM Serif Display', serif; font-size: 48px; margin: 0 0 6px 0; color: var(--text-h); }
-.team-credentials { display: block; color: #b87333; font-size: 48px; line-height: 1; }
-.team-tags { display: none; }
-.tag { display: none; }
-.team-role { color: var(--muted); margin: 0 0 18px 0; font-weight: 600; }
-.team-text { color: rgba(0,0,0,0.68); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; margin: 0 0 12px 0; }
-.team-text strong { font-weight: 600; color: #173a2e; }
-.team-closing { font-style: italic; color: #173a2e; font-weight: 600; font-size: 14px; margin-top: 12px; }
+.team-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 40px; align-items: start; }
+.team-photo { display: flex; justify-content: flex-start; }
+.team-photo img { width: 100%; max-width: 28rem; height: auto; display: block; box-shadow: 0 8px 20px rgba(10,10,10,0.08); }
+.aspect-\[3\/4\] { aspect-ratio: 3 / 4; }
+.rounded-2xl { border-radius: 1rem; }
+.object-cover { object-fit: cover; }
+.object-top { object-position: top; }
+.max-w-md { max-width: 28rem; }
+.team-bio { display: flex; flex-direction: column; }
+.team-label {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #b87333;
+  margin: 0 0 8px 0;
+}
+.team-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 48px;
+  line-height: 1.1;
+  color: var(--primary);
+  margin: 0 0 14px 0;
+}
+.team-heading-line {
+  display: block;
+  color: inherit;
+  font-weight: 400;
+}
+.team-heading-accent { color: inherit; }
+.team-subtitle {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #b87333;
+  margin: 0 0 20px 0;
+}
 
 @media (max-width: 880px) {
-  .team-inner { grid-template-columns: 1fr; }
-  .team-photo img { aspect-ratio: auto; height: 420px; }
-  .team-name { font-size: 28px; }
+  .team-inner { grid-template-columns: 1fr; gap: 24px; }
+  .team-photo { justify-content: center; }
+  .team-photo img { max-width: 100%; }
+  .team-heading { font-size: 32px; }
 }
 
 /* Booking / Appointment styles */
