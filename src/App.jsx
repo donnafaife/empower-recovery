@@ -198,11 +198,6 @@ function App() {
               <p className="booking-copy">Information about our upcoming practice will be available shortly.</p>
             </div>
 
-            <div className="booking-right">
-              <div className="booking-card">
-                <p className="confirm-copy">Information about our upcoming practice will be available shortly.</p>
-              </div>
-            </div>
           </div>
         </section>
 
