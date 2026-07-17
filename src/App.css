@@ -642,10 +642,24 @@ body, .page-root {
 
 .team-text {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
   color: rgba(0,0,0,0.72);
   margin: 0 0 16px 0;
+}
+
+.team-text strong {
+  font-weight: 600;
+  color: #173a2e;
+}
+
+.team-closing {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+  color: #173a2e;
+  margin-top: 4px;
 }
 
 @media (max-width: 880px) {
