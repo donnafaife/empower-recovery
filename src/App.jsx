@@ -42,7 +42,7 @@ function App() {
               <span className="hero-accent">Restoring Families.</span>
             </h1>
             <p className="hero-copy">
-              Empower Recovery offers compassionate, evidence-based addiction medicine — integrating medical care, therapy, and long-term support for lasting change.
+              Empower Recovery offers compassionate, personalized, evidence-based addiction treatment that combines medical care, therapy, and ongoing support for lasting recovery.
             </p>
 
             <div className="hero-actions">
