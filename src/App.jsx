@@ -179,7 +179,7 @@ function App() {
 
               <p className="team-text">Dr. Monteiro has cared for patients across a wide range of healthcare settings, including outpatient clinics, residential treatment programs, opioid treatment programs, hospitals, correctional facilities, and academic medical centers. He has served as Medical Director for multiple Medication-Assisted Treatment (MAT) programs, expanding access to effective treatment for opioid and alcohol use disorders.</p>
 
-              <p className="team-text">In addition to patient care, Dr. Monteiro has led multidisciplinary healthcare teams, mentored physicians and advanced practice providers, and championed quality improvement initiatives. His commitment to clinical excellence earned him recognition as <strong>Best Attending Physician</strong> at the Roseburg Family Medicine Residency Program.</p>
+              <p className="team-text">In addition to patient care, Dr. Monteiro has led multidisciplinary healthcare teams, mentored physicians and advanced practice providers, and championed quality improvement initiatives. His commitment to clinical excellence earned him recognition as Best Attending Physician at the Roseburg Family Medicine Residency Program.</p>
 
               <p className="team-text">He earned his medical degree from Government Medical College in India, a Master of Public Health from the University of Medicine &amp; Dentistry of New Jersey, and completed residency training in Family Medicine and Preventive Medicine, followed by a Clinical Hospital Medicine Fellowship at UT Health San Antonio.</p>
 
