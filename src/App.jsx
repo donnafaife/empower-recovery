@@ -183,7 +183,7 @@ function App() {
 
               <p className="team-text">He earned his medical degree from Government Medical College in India, a Master of Public Health from the University of Medicine &amp; Dentistry of New Jersey, and completed residency training in Family Medicine and Preventive Medicine, followed by a Clinical Hospital Medicine Fellowship at UT Health San Antonio.</p>
 
-              <p className="team-text">Dr. Monteiro is board certified by the American Board of Preventive Medicine in Addiction Medicine and Preventive Medicine &amp; Public Health, and by the American Board of Family Medicine. He is licensed to practice medicine in Texas, Oregon, and Virginia.</p>
+              <p className="team-text">Dr. Monteiro is board certified in Addiction Medicine, Preventive Medicine &amp; Public Health, and Family Medicine.</p>
 
               <p className="team-text">At Empower Recovery, Dr. Monteiro's mission is to provide expert, compassionate care that empowers individuals and families to achieve lasting recovery.</p>
             </div>
