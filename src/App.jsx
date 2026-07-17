@@ -64,7 +64,7 @@ function App() {
               </div>
               <div className="stat-item">
                 <p className="stat-top">Virtual Care</p>
-                <p className="stat-label">Available Across the US</p>
+                <p className="stat-label">Available Across Texas</p>
               </div>
               <div className="stat-item">
                 <p className="stat-top">Personalized Treatment</p>
