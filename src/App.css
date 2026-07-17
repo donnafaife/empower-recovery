@@ -446,6 +446,11 @@
   .page-root { background-attachment: scroll; }
 }
 
+/* Ensure hero content sits below the absolute header on small screens */
+@media (max-width: 720px) {
+  .hero { padding-top: 88px; }
+}
+
 /* Page layout utilities */
 .container {
   max-width: 1100px;
