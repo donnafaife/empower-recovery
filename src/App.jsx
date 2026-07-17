@@ -28,7 +28,6 @@ function App() {
             <a href="#about">About Us</a>
             <a href="#services">What We Offer</a>
             <a href="#team">Our Team</a>
-            <span className="nav-cta">Information about our upcoming practice will be available shortly.</span>
           </nav>
         </div>
       </header>
@@ -50,8 +49,6 @@ function App() {
               <div className="btn btn-primary" aria-label="Practice information coming soon">
                 <span>Information about our upcoming practice will be available shortly.</span>
               </div>
-
-              <a className="btn btn-ghost" href="#about" aria-label="Learn About Us">Learn About Us</a>
             </div>
           </div>
 
