@@ -55,20 +55,20 @@ function App() {
           <div className="hero-stats-card" aria-label="Empower Recovery service statistics">
             <div className="stats-grid">
               <div className="stat-item">
-                <p className="stat-value">TBD</p>
-                <p className="stat-label">Patients served</p>
+                <p className="stat-top">15+ Years</p>
+                <p className="stat-label">Clinical Experience</p>
               </div>
               <div className="stat-item">
-                <p className="stat-value">18 yrs</p>
-                <p className="stat-label">Combined expertise</p>
+                <p className="stat-top">Expert Team</p>
+                <p className="stat-label">Board Certified Addiction Medicine Physician &amp; Experienced Nurse Practitioner</p>
               </div>
               <div className="stat-item">
-                <p className="stat-value">TBD</p>
-                <p className="stat-label">Confidential consultations</p>
+                <p className="stat-top">Virtual Care</p>
+                <p className="stat-label">Available Across the US</p>
               </div>
               <div className="stat-item">
-                <p className="stat-value">TBD</p>
-                <p className="stat-label">Supportive care</p>
+                <p className="stat-top">Personalized Treatment</p>
+                <p className="stat-label">Individualized Recovery Plans</p>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ function App() {
 
         <section id="services" className="services-offer">
           <div className="container offer-inner">
-            <p className="offer-eyebrow">What We Offer</p>
+            <p className="offer-eyebrow">Why Choose Empower Recovery</p>
             <h2 className="offer-headline">Every recovery journey is different. <span className="muted">So is our care.</span></h2>
 
             <div className="offer-cards" role="list">
