@@ -40,6 +40,22 @@ export function AuthProvider({ children }) {
     }
   }, [])
 
+  // Normal in-app Back navigation already re-checks auth correctly (no full
+  // reload happens, so React just re-renders against current, already-cleared
+  // state). This handles the other case: the browser restoring an entire
+  // frozen page from back/forward-cache after a real cross-document
+  // navigation, which can replay stale in-memory React state without
+  // re-running any code. logout() already clears localStorage synchronously,
+  // so forcing a reload here guarantees fresh state is always read from
+  // localStorage - the source of truth - never from a frozen snapshot.
+  useEffect(() => {
+    function handlePageShow(event) {
+      if (event.persisted) window.location.reload()
+    }
+    window.addEventListener('pageshow', handlePageShow)
+    return () => window.removeEventListener('pageshow', handlePageShow)
+  }, [])
+
   async function login(email, password) {
     const result = await loginRequest(email, password)
     localStorage.setItem(TOKEN_STORAGE_KEY, result.data.token)

@@ -211,6 +211,137 @@
   color: var(--admin-muted);
 }
 
+.admin-section {
+  margin-top: 32px;
+}
+
+.admin-section:first-child {
+  margin-top: 0;
+}
+
+.admin-section-title {
+  font-size: 16px;
+  margin: 0 0 12px 0;
+}
+
+/* Health panel */
+
+.admin-health-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.admin-health-card {
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.admin-health-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-health-label {
+  font-weight: 600;
+  flex: 1;
+}
+
+.admin-health-message {
+  margin: 8px 0 0 0;
+  font-size: 13px;
+  color: var(--admin-muted);
+}
+
+.admin-health-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.admin-health-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.admin-health-dot-healthy,
+.admin-health-badge-healthy {
+  background: rgba(11, 107, 99, 0.12);
+  color: var(--admin-primary-dark);
+}
+
+.admin-health-dot-warning,
+.admin-health-badge-warning {
+  background: rgba(184, 115, 51, 0.15);
+  color: #b87333;
+}
+
+.admin-health-dot-error,
+.admin-health-badge-error {
+  background: rgba(179, 38, 30, 0.12);
+  color: #b3261e;
+}
+
+.admin-health-badge {
+  margin-left: auto;
+}
+
+/* Recent activity tables */
+
+.admin-table-card {
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.admin-table-title {
+  font-size: 14px;
+  margin: 0 0 12px 0;
+}
+
+.admin-table-empty {
+  color: var(--admin-muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.admin-table-scroll {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-table th {
+  text-align: left;
+  color: var(--admin-muted);
+  font-weight: 600;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--admin-border);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--admin-border);
+  white-space: nowrap;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
 @media (min-width: 720px) {
   .admin-body {
     flex-direction: row;
@@ -224,5 +355,9 @@
 
   .admin-stat-grid {
     grid-template-columns: repeat(3, minmax(0, 220px));
+  }
+
+  .admin-health-grid {
+    grid-template-columns: repeat(4, minmax(0, 220px));
   }
 }

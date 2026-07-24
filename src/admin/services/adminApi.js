@@ -23,6 +23,14 @@ export function getCurrentUser(token) {
   return authorizedRequest('/api/users/me', token)
 }
 
-export function getAnalyticsSummary(token) {
-  return authorizedRequest('/api/analytics/summary', token)
+export function getDashboardStats(token) {
+  return authorizedRequest('/api/admin/dashboard/stats', token)
+}
+
+export function getDashboardHealth(token) {
+  return authorizedRequest('/api/admin/dashboard/health', token)
+}
+
+export function getDashboardRecentActivity(token) {
+  return authorizedRequest('/api/admin/dashboard/recent-activity', token)
 }

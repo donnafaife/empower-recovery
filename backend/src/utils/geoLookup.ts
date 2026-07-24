@@ -89,3 +89,11 @@ export async function lookupGeo(ip: string): Promise<GeoResult | null> {
   setCached(ip, result);
   return result;
 }
+
+// For health checks: is the database currently loaded? Reuses the same
+// cached loadReader() promise as lookupGeo, so this never re-reads the file
+// and never does a real IP lookup.
+export async function isGeoDatabaseAvailable(): Promise<boolean> {
+  const reader = await loadReader();
+  return reader !== null;
+}
