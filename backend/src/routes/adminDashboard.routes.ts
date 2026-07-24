@@ -62,7 +62,7 @@ router.get('/stats', authenticateToken, requireRole(['ADMIN', 'SUPER_ADMIN']), a
         prisma.pageView.count(),
         prisma.event.count(),
         prisma.lead.count(),
-        prisma.lead.count({ where: { status: 'new' } }),
+        prisma.lead.count({ where: { status: 'NEW' } }),
       ]);
 
     res.json(

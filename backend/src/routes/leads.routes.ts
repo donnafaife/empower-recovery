@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { authenticateToken, requireRole } from '../middleware/auth.middleware';
 import { prisma } from '../prisma/client';
 import { errorResponse, successResponse } from '../utils/response';
 
@@ -46,6 +45,10 @@ router.post('/', async (req, res, next) => {
         phone: parsed.phone,
         message: parsed.message,
       },
+      // Explicit select (never rely on Prisma's implicit full-row return) so
+      // this public endpoint can never expose `notes`, regardless of what
+      // fields the Lead model gains in the future.
+      select: { id: true, name: true, email: true, phone: true, message: true, status: true, createdAt: true, updatedAt: true },
     });
     res.status(201).json(successResponse(lead, 'Lead created successfully'));
   } catch (error) {
@@ -57,13 +60,8 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.get('/', authenticateToken, requireRole(['ADMIN', 'SUPER_ADMIN']), async (_req, res, next) => {
-  try {
-    const leads = await prisma.lead.findMany({ orderBy: { createdAt: 'desc' } });
-    res.json(successResponse(leads, 'Leads fetched successfully'));
-  } catch (error) {
-    next(error);
-  }
-});
+// The admin-facing list (with pagination/search/filtering) lives at
+// /api/admin/leads (see adminLeads.routes.ts) - this router only ever
+// handles the public contact-form submission.
 
 export { router as leadsRouter };

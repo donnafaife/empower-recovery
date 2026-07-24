@@ -1,6 +1,6 @@
 // Base URL for the backend API. Set VITE_API_BASE_URL in a .env file to
 // point at a deployed backend; falls back to the local dev server.
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000'
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000'
 
 // Thrown when the backend responds with an error. Carries the HTTP status
 // and the field-level `details` from the response (if any), so a caller can

@@ -149,9 +149,16 @@
 }
 
 .admin-sidebar-item {
+  display: block;
   padding: 10px 12px;
   border-radius: 8px;
   font-size: 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.admin-sidebar-item:hover {
+  background: rgba(7, 40, 43, 0.05);
 }
 
 .admin-sidebar-item-active {
@@ -342,6 +349,141 @@
   border-bottom: none;
 }
 
+/* Lead status badges */
+
+.admin-status-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.admin-status-badge-NEW {
+  background: rgba(11, 107, 99, 0.12);
+  color: var(--admin-primary-dark);
+}
+
+.admin-status-badge-CONTACTED {
+  background: rgba(184, 115, 51, 0.15);
+  color: #b87333;
+}
+
+.admin-status-badge-QUALIFIED {
+  background: rgba(29, 78, 216, 0.12);
+  color: #1d4ed8;
+}
+
+.admin-status-badge-CONVERTED {
+  background: rgba(21, 128, 61, 0.12);
+  color: #15803d;
+}
+
+.admin-status-badge-CLOSED {
+  background: rgba(85, 97, 112, 0.12);
+  color: var(--admin-muted);
+}
+
+/* Leads list: filters, table link, pagination */
+
+.admin-lead-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.admin-lead-filters .admin-input {
+  width: 100%;
+}
+
+.admin-lead-link {
+  color: var(--admin-primary-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.admin-lead-link:hover {
+  text-decoration: underline;
+}
+
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--admin-muted);
+}
+
+.admin-lead-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+/* Lead detail page */
+
+.admin-lead-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.admin-lead-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-lead-field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--admin-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-lead-field-value {
+  font-size: 15px;
+}
+
+.admin-lead-field-full {
+  grid-column: 1 / -1;
+}
+
+.admin-notes-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.admin-notes-saved {
+  color: var(--admin-muted);
+  font-size: 13px;
+}
+
+.admin-textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--admin-border);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.admin-textarea:focus {
+  outline: none;
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 3px rgba(11, 107, 99, 0.15);
+}
+
 @media (min-width: 720px) {
   .admin-body {
     flex-direction: row;
@@ -359,5 +501,18 @@
 
   .admin-health-grid {
     grid-template-columns: repeat(4, minmax(0, 220px));
+  }
+
+  .admin-lead-filters {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .admin-lead-filters .admin-input {
+    width: auto;
+  }
+
+  .admin-lead-detail-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
