@@ -70,6 +70,22 @@ export function updateLeadNotes(token, id, notes) {
   })
 }
 
+export function getVisitors(token, params) {
+  return authorizedRequest(`/api/admin/analytics/visitors${buildQueryString(params)}`, token)
+}
+
+export function getVisitorById(token, id) {
+  return authorizedRequest(`/api/admin/analytics/visitors/${id}`, token)
+}
+
+export function getVisitorSessions(token, id, params) {
+  return authorizedRequest(`/api/admin/analytics/visitors/${id}/sessions${buildQueryString(params)}`, token)
+}
+
+export function getSessionById(token, id) {
+  return authorizedRequest(`/api/admin/analytics/sessions/${id}`, token)
+}
+
 // A CSV download isn't a JSON response, so this can't go through the shared
 // request() helper - it does its own fetch + Blob handling, then triggers a
 // browser download via a temporary object-URL link (the standard pattern for

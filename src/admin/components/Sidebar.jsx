@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
 
-// "Analytics" / "Users" are intentionally inert placeholders - their real
-// pages/routes arrive in later phases. A disabled-looking item is less
-// confusing than a link that goes nowhere.
-const FUTURE_NAV_ITEMS = ['Analytics', 'Users']
+// "Users" is the sole remaining inert placeholder - its real page arrives in
+// a later phase. A disabled-looking item is less confusing than a link that
+// goes nowhere.
+const FUTURE_NAV_ITEMS = ['Users']
 
 function navLinkClassName({ isActive }) {
   return `admin-sidebar-item${isActive ? ' admin-sidebar-item-active' : ''}`
@@ -17,6 +17,9 @@ function Sidebar() {
       </NavLink>
       <NavLink to="/admin/leads" className={navLinkClassName}>
         Leads
+      </NavLink>
+      <NavLink to="/admin/analytics" className={navLinkClassName}>
+        Analytics
       </NavLink>
       {FUTURE_NAV_ITEMS.map((item) => (
         <span key={item} className="admin-sidebar-item admin-sidebar-item-disabled" aria-disabled="true">

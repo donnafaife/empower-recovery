@@ -11,6 +11,7 @@ import { analyticsRouter } from './routes/analytics.routes';
 import { telemetryRouter } from './routes/telemetry.routes';
 import { adminDashboardRouter } from './routes/adminDashboard.routes';
 import { adminLeadsRouter } from './routes/adminLeads.routes';
+import { adminAnalyticsRouter } from './routes/adminAnalytics.routes';
 import { errorHandler } from './middleware/error.middleware';
 
 dotenv.config();
@@ -35,6 +36,7 @@ app.use('/api/analytics', analyticsRouter);
 app.use('/api/telemetry', telemetryRouter);
 app.use('/api/admin/dashboard', adminDashboardRouter);
 app.use('/api/admin/leads', adminLeadsRouter);
+app.use('/api/admin/analytics', adminAnalyticsRouter);
 
 app.use((req: Request, res: Response, _next: NextFunction) => {
   res.status(404).json({ message: 'Route not found' });

@@ -515,4 +515,42 @@
   .admin-lead-detail-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .admin-visitor-filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .admin-visitor-filters .admin-input {
+    width: auto;
+  }
+}
+
+/* Visitor analytics */
+
+.admin-device-badge,
+.admin-location-badge {
+  font-size: 13px;
+  color: var(--admin-muted);
+  white-space: nowrap;
+}
+
+.admin-visitor-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.admin-visitor-filters .admin-input {
+  width: 100%;
+}
+
+.admin-date-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--admin-muted);
 }
