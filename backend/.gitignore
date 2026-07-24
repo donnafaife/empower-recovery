@@ -6,3 +6,7 @@ dist
 .env.*.local
 
 *.log
+
+# GeoLite2 database - large binary, and MaxMind's license terms don't allow
+# redistributing it. Each environment downloads its own copy.
+data/*.mmdb
