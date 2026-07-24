@@ -1,0 +1,228 @@
+/* Admin-only styles. Loaded exclusively by AdminApp.jsx (which is itself
+   lazy-loaded from main.jsx), so this never reaches the public site. */
+
+.admin-shell,
+.admin-login-page {
+  --admin-primary: #0b6b63;
+  --admin-primary-dark: #09524a;
+  --admin-ink: #07282b;
+  --admin-muted: #556170;
+  --admin-border: rgba(7, 40, 43, 0.12);
+  --admin-bg: #f6fbfb;
+  --admin-card-bg: #ffffff;
+
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--admin-ink);
+  min-height: 100vh;
+  background: var(--admin-bg);
+}
+
+/* Login page */
+
+.admin-login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(8, 23, 28, 0.08);
+  padding: 32px;
+  display: grid;
+  gap: 16px;
+}
+
+.admin-login-title {
+  font-size: 20px;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+/* Shared form elements */
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--admin-muted);
+}
+
+.admin-input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--admin-border);
+  font-size: 15px;
+}
+
+.admin-input:focus {
+  outline: none;
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 3px rgba(11, 107, 99, 0.15);
+}
+
+.admin-button {
+  background: var(--admin-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  background: var(--admin-primary-dark);
+}
+
+.admin-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-button-ghost {
+  background: transparent;
+  color: var(--admin-ink);
+  border: 1px solid var(--admin-border);
+}
+
+.admin-button-ghost:hover {
+  background: rgba(7, 40, 43, 0.05);
+}
+
+.admin-error {
+  color: #b3261e;
+  font-size: 14px;
+  margin: 0;
+}
+
+.admin-status-message {
+  color: var(--admin-muted);
+  padding: 24px;
+}
+
+/* Dashboard shell */
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--admin-card-bg);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-header-title {
+  font-weight: 700;
+}
+
+.admin-header-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.admin-header-role {
+  color: var(--admin-muted);
+}
+
+.admin-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background: var(--admin-card-bg);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-sidebar-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.admin-sidebar-item-active {
+  background: rgba(11, 107, 99, 0.1);
+  color: var(--admin-primary-dark);
+  font-weight: 600;
+}
+
+.admin-sidebar-item-disabled {
+  color: var(--admin-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.admin-sidebar-soon {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.admin-content {
+  padding: 24px;
+  flex: 1;
+}
+
+.admin-content-title {
+  font-size: 22px;
+  margin: 0 0 20px 0;
+}
+
+.admin-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.admin-stat-card {
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--admin-primary-dark);
+}
+
+.admin-stat-label {
+  font-size: 13px;
+  color: var(--admin-muted);
+}
+
+@media (min-width: 720px) {
+  .admin-body {
+    flex-direction: row;
+  }
+
+  .admin-sidebar {
+    width: 200px;
+    border-bottom: none;
+    border-right: 1px solid var(--admin-border);
+  }
+
+  .admin-stat-grid {
+    grid-template-columns: repeat(3, minmax(0, 220px));
+  }
+}

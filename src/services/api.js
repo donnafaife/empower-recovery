@@ -2,17 +2,19 @@
 // point at a deployed backend; falls back to the local dev server.
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000'
 
-// Thrown when the backend responds with an error. Carries the field-level
-// `details` from the response (if any) so a form can show per-field messages.
+// Thrown when the backend responds with an error. Carries the HTTP status
+// and the field-level `details` from the response (if any), so a caller can
+// tell (for example) an expired-token 403 apart from an insufficient-role 403.
 export class ApiError extends Error {
-  constructor(message, details) {
+  constructor(message, status, details) {
     super(message)
     this.name = 'ApiError'
+    this.status = status
     this.details = details
   }
 }
 
-async function request(path, options = {}) {
+export async function request(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
     headers: { 'Content-Type': 'application/json' },
     ...options,
@@ -23,7 +25,7 @@ async function request(path, options = {}) {
   const body = await response.json().catch(() => null)
 
   if (!response.ok) {
-    throw new ApiError(body?.message || 'Something went wrong. Please try again.', body?.details)
+    throw new ApiError(body?.message || 'Something went wrong. Please try again.', response.status, body?.details)
   }
 
   return body

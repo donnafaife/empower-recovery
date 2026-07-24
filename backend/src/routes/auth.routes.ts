@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { prisma } from '../prisma/client';
 import { authConfig } from '../config/auth';
 import { successResponse } from '../utils/response';
+import { authenticateToken, requireRole } from '../middleware/auth.middleware';
 
 const router = Router();
 
@@ -20,7 +21,9 @@ const loginSchema = z.object({
   password: z.string().min(6),
 });
 
-router.post('/register', async (req, res, next) => {
+// Admin-only: creating accounts (including choosing their role) is something
+// only an existing admin should be able to do - this is not public signup.
+router.post('/register', authenticateToken, requireRole(['ADMIN', 'SUPER_ADMIN']), async (req, res, next) => {
   try {
     const parsed = registerSchema.parse(req.body);
     const existingUser = await prisma.user.findUnique({ where: { email: parsed.email } });
