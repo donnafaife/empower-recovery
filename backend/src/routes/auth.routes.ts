@@ -35,7 +35,7 @@ router.post('/register', async (req, res, next) => {
       data: {
         name: parsed.name,
         email: parsed.email,
-        password: hashedPassword,
+        passwordHash: hashedPassword,
         role: parsed.role ?? 'USER',
       },
     });
@@ -60,7 +60,7 @@ router.post('/login', async (req, res, next) => {
       return;
     }
 
-    const passwordMatch = await bcrypt.compare(parsed.password, user.password);
+    const passwordMatch = await bcrypt.compare(parsed.password, user.passwordHash);
     if (!passwordMatch) {
       res.status(401).json({ message: 'Invalid credentials' });
       return;

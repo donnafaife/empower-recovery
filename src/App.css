@@ -790,6 +790,18 @@ select.form-input { -webkit-appearance: none; -moz-appearance: none; appearance:
 .contact-form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--muted); }
 .contact-form input { padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(7,40,43,0.08); }
 
+/* .form-input sets a fixed height for single-line inputs; a textarea needs
+   to grow instead, so override height for the multi-line message field. */
+.form-textarea { height: auto; min-height: 96px; resize: vertical; }
+
+.field-error { color: #b3261e; font-size: 13px; margin: -4px 0 0 0; }
+
+/* Visually hides the honeypot field from sighted users while keeping it
+   present in the DOM for bots to fill in. Paired with aria-hidden and
+   tabIndex={-1} in the component so screen reader and keyboard users
+   never encounter it either. */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
 @media (min-width: 920px) {
   .contact-grid { grid-template-columns: 1fr 420px; align-items: start; gap: 40px; }
 }
