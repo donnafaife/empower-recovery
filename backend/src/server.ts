@@ -19,8 +19,16 @@ dotenv.config();
 const app = express();
 const port = Number(process.env.PORT ?? 4000);
 
+// Which frontend origins may call this API. Comma-separated so a new domain
+// (e.g. a custom domain later) can be added via an env var, no code change.
+const allowedOrigins = (
+  process.env.ALLOWED_ORIGINS ?? 'http://localhost:5173,https://empower-recovery.vercel.app'
+)
+  .split(',')
+  .map((origin) => origin.trim());
+
 app.use(helmet());
-app.use(cors());
+app.use(cors({ origin: allowedOrigins }));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
