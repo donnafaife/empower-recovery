@@ -52,8 +52,19 @@ app.use((req: Request, res: Response, _next: NextFunction) => {
 
 app.use(errorHandler);
 
-createPrismaClient().then(() => {
-  app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
-});
+async function start() {
+  try {
+    console.log('Connecting to database...');
+    await createPrismaClient();
+    console.log('Database connected.');
+
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
+    });
+  } catch (err) {
+    console.error('Startup failed:', err);
+    process.exit(1);
+  }
+}
+
+start();
