@@ -1,0 +1,47 @@
+import { useCallback, useEffect, useState } from 'react'
+import { ApiError } from '@/admin/lib/apiClient'
+
+interface UseApiQueryResult<T> {
+  data: T | null
+  loading: boolean
+  error: string | null
+  refetch: () => void
+}
+
+// Generic "fetch on mount / whenever deps change" hook shared by every admin
+// page - keeps loading/error/data handling identical everywhere instead of
+// re-implementing it per page.
+export function useApiQuery<T>(fetcher: () => Promise<T>, deps: unknown[]): UseApiQueryResult<T> {
+  const [data, setData] = useState<T | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [refetchIndex, setRefetchIndex] = useState(0)
+
+  const refetch = useCallback(() => setRefetchIndex((value) => value + 1), [])
+
+  useEffect(() => {
+    let cancelled = false
+    setLoading(true)
+    setError(null)
+
+    fetcher()
+      .then((result) => {
+        if (cancelled) return
+        setData(result)
+      })
+      .catch((err) => {
+        if (cancelled) return
+        setError(err instanceof ApiError ? err.message : 'Something went wrong. Please try again.')
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [...deps, refetchIndex])
+
+  return { data, loading, error, refetch }
+}

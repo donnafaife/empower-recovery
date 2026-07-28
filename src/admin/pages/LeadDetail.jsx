@@ -72,7 +72,7 @@ function LeadDetail() {
   }
 
   return (
-    <div className="admin-shell">
+    <div className="admin-shell legacy-admin">
       <Header />
       <div className="admin-body">
         <Sidebar />

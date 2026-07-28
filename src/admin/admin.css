@@ -1,7 +1,180 @@
-/* Admin-only styles. Loaded exclusively by AdminApp.jsx (which is itself
-   lazy-loaded from main.jsx), so this never reaches the public site. */
+/* Admin-only styles. Loaded exclusively by AdminApp.tsx (which is itself
+   lazy-loaded from main.jsx), so Tailwind here never reaches the public
+   site's hand-written CSS. Dark mode is scoped to .admin-shell (not
+   documentElement) via the custom variant below, so toggling it can never
+   affect the public marketing pages. */
 
-.admin-shell,
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f6fbfb;
+  --foreground: #07282b;
+  --card: #ffffff;
+  --card-foreground: #07282b;
+  --popover: #ffffff;
+  --popover-foreground: #07282b;
+  --primary: #0b6b63;
+  --primary-foreground: #f6fbfb;
+  --secondary: #edeae3;
+  --secondary-foreground: #07282b;
+  --muted: #eef3f2;
+  --muted-foreground: #556170;
+  --accent: #b87333;
+  --accent-foreground: #ffffff;
+  --destructive: #b3261e;
+  --destructive-foreground: #ffffff;
+  --success: #0b6b63;
+  --success-foreground: #ffffff;
+  --warning: #b87333;
+  --warning-foreground: #ffffff;
+  --border: rgba(7, 40, 43, 0.12);
+  --input: rgba(7, 40, 43, 0.18);
+  --ring: #0b6b63;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #07282b;
+  --sidebar-border: rgba(7, 40, 43, 0.08);
+  --sidebar-accent: #eef3f2;
+  --sidebar-accent-foreground: #07282b;
+  --chart-1: #0b6b63;
+  --chart-2: #b87333;
+  --chart-3: #2b5a86;
+  --chart-4: #d99150;
+  --chart-5: #556170;
+}
+
+.dark {
+  --background: #12181a;
+  --foreground: #eef3f2;
+  --card: #192124;
+  --card-foreground: #eef3f2;
+  --popover: #192124;
+  --popover-foreground: #eef3f2;
+  --primary: #34b3a4;
+  --primary-foreground: #08201d;
+  --secondary: #212a2c;
+  --secondary-foreground: #eef3f2;
+  --muted: #1c2427;
+  --muted-foreground: #93a6a2;
+  --accent: #d99150;
+  --accent-foreground: #1b1206;
+  --destructive: #ef5350;
+  --destructive-foreground: #2a0605;
+  --success: #34b3a4;
+  --success-foreground: #08201d;
+  --warning: #d99150;
+  --warning-foreground: #1b1206;
+  --border: rgba(238, 243, 242, 0.1);
+  --input: rgba(238, 243, 242, 0.16);
+  --ring: #34b3a4;
+  --sidebar: #151b1d;
+  --sidebar-foreground: #eef3f2;
+  --sidebar-border: rgba(238, 243, 242, 0.08);
+  --sidebar-accent: #212a2c;
+  --sidebar-accent-foreground: #eef3f2;
+  --chart-1: #34b3a4;
+  --chart-2: #d99150;
+  --chart-3: #6f9fd1;
+  --chart-4: #ffcf7a;
+  --chart-5: #93a6a2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --animate-in: admin-fade-in 0.2s ease-out;
+}
+
+@keyframes admin-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-shell {
+  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  color-scheme: light;
+  min-height: 100vh;
+}
+
+.admin-shell.dark {
+  color-scheme: dark;
+}
+
+.admin-shell ::selection {
+  background: color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+/* Thin, unobtrusive scrollbars for admin tables/sidebar. */
+.admin-shell .admin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+.admin-shell .admin-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.admin-shell .admin-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+/* --- Legacy admin styles below ---
+   Leads/LeadDetail (and their Header/Sidebar/StatusBadge) haven't been
+   migrated to the shadcn design system yet, so they still depend on these
+   hand-written rules. Scoped to .legacy-admin (not .admin-shell, which the
+   new pages above already claim) so the two style systems can't collide -
+   remove this block once Leads is ported. */
+
+.legacy-admin,
 .admin-login-page {
   --admin-primary: #0b6b63;
   --admin-primary-dark: #09524a;
