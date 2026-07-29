@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { LogOut, Menu, Moon, Sun } from 'lucide-react'
+import { KeyRound, LogOut, Menu, Moon, Sun } from 'lucide-react'
 import { NAV_ITEMS } from '@/admin/components/layout/navConfig'
+import { ChangePasswordDialog } from '@/admin/components/layout/ChangePasswordDialog'
 import { Avatar, AvatarFallback } from '@/admin/components/ui/avatar'
 import { Button } from '@/admin/components/ui/button'
 import {
@@ -23,6 +25,7 @@ export function Header({ onOpenMobileMenu }: HeaderProps) {
   const { user, logout } = useAuth()
   const { theme, toggleTheme } = useTheme()
   const location = useLocation()
+  const [changePasswordOpen, setChangePasswordOpen] = useState(false)
 
   // Session detail pages (/admin/sessions/:id) aren't in the nav themselves -
   // they're reached from a visitor's session list, so they're treated as
@@ -62,6 +65,15 @@ export function Header({ onOpenMobileMenu }: HeaderProps) {
               <p className="truncate text-xs font-normal text-muted-foreground">{user?.email}</p>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onSelect={(event) => {
+                event.preventDefault()
+                setChangePasswordOpen(true)
+              }}
+            >
+              <KeyRound className="h-4 w-4" />
+              Change password
+            </DropdownMenuItem>
             <DropdownMenuItem onClick={() => logout()} className="text-destructive focus:text-destructive">
               <LogOut className="h-4 w-4" />
               Log out
@@ -69,6 +81,8 @@ export function Header({ onOpenMobileMenu }: HeaderProps) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
+      <ChangePasswordDialog open={changePasswordOpen} onOpenChange={setChangePasswordOpen} />
     </header>
   )
 }

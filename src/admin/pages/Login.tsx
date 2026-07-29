@@ -5,6 +5,7 @@ import { Button } from '@/admin/components/ui/button'
 import { Input } from '@/admin/components/ui/input'
 import { Label } from '@/admin/components/ui/label'
 import { Card, CardContent } from '@/admin/components/ui/card'
+import { ChangePasswordDialog } from '@/admin/components/layout/ChangePasswordDialog'
 import { useAuth } from '@/admin/hooks/useAuth'
 import { ApiError } from '@/admin/lib/apiClient'
 
@@ -14,6 +15,7 @@ export function Login() {
   const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [changePasswordOpen, setChangePasswordOpen] = useState(false)
 
   if (!loading && user) {
     return <Navigate to="/admin/dashboard" replace />
@@ -92,12 +94,22 @@ export function Login() {
                 {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
                 Sign in
               </Button>
+
+              <button
+                type="button"
+                onClick={() => setChangePasswordOpen(true)}
+                className="w-full text-center text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                Change password
+              </button>
             </form>
           </CardContent>
         </Card>
 
         <p className="text-center text-xs text-muted-foreground">Internal tool — access is restricted to Empower Recovery staff.</p>
       </div>
+
+      <ChangePasswordDialog open={changePasswordOpen} onOpenChange={setChangePasswordOpen} defaultEmail={email} />
     </div>
   )
 }

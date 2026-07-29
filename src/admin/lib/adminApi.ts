@@ -27,6 +27,19 @@ export function login(email: string, password: string) {
   return apiPost<LoginResponse>('/api/auth/login', { email, password })
 }
 
+export interface ChangePasswordParams {
+  token?: string | null
+  email?: string
+  currentPassword: string
+  newPassword: string
+}
+
+// Signed-in callers pass a token (the backend identifies them from it and
+// ignores email); signed-out callers (the login page) pass email instead.
+export function changePassword({ token, email, currentPassword, newPassword }: ChangePasswordParams) {
+  return apiPost<null>('/api/auth/change-password', { email, currentPassword, newPassword }, token)
+}
+
 export function getCurrentUser(token: string) {
   return apiGet<CurrentUserResponse>('/api/users/me', token)
 }

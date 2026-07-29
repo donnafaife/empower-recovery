@@ -33,6 +33,25 @@ export function authenticateToken(req: AuthenticatedRequest, res: Response, next
   }
 }
 
+// Like authenticateToken, but for routes that work both signed-in (identify
+// the user from their session) and signed-out (caller identifies themselves
+// some other way, e.g. email + password in the body). A missing or invalid
+// token just means "no user" here instead of a 401/403.
+export function attachUserIfPresent(req: AuthenticatedRequest, _res: Response, next: NextFunction) {
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.startsWith('Bearer ') ? authHeader.slice(7) : null;
+
+  if (token) {
+    try {
+      req.user = jwt.verify(token, authConfig.jwtSecret) as { id: string; email: string; role: string };
+    } catch {
+      // Invalid/expired token on an optional-auth route: proceed as signed-out.
+    }
+  }
+
+  next();
+}
+
 export function requireRole(roles: string[]) {
   return (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     if (!req.user) {
