@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import glenPhoto from './assets/glen-monteiro.jpg'
 import telehealth from './assets/telehealth.jpg'
+import { trackPageView } from './services/telemetry'
 
 function App() {
 
@@ -21,6 +22,37 @@ function App() {
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // This is a one-page site (no separate URLs for About/Services/Team/
+  // Booking), so instead of page views we record a "virtual" page view -
+  // reusing the same tracking the dashboard already reads - the first time
+  // each section scrolls into view. Sections only exist in the DOM once the
+  // splash screen is dismissed, so this waits for that.
+  useEffect(() => {
+    if (showSplash) return
+
+    const sectionIds = ['about', 'services', 'team', 'booking']
+    const alreadyTracked = new Set()
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !alreadyTracked.has(entry.target.id)) {
+            alreadyTracked.add(entry.target.id)
+            trackPageView(`/#${entry.target.id}`)
+          }
+        })
+      },
+      { threshold: 0.3 },
+    )
+
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id)
+      if (section) observer.observe(section)
+    })
+
+    return () => observer.disconnect()
+  }, [showSplash])
 
   if (showSplash) {
     return (
