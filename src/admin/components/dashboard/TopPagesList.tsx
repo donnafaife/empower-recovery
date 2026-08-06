@@ -9,6 +9,21 @@ interface TopPagesListProps {
   loading?: boolean
 }
 
+// The public site is a single page with anchor-linked sections rather than
+// separate URLs, so raw paths like "/" or "/#services" aren't self-explanatory
+// to a non-technical reader - map them to plain-English labels for display.
+const PAGE_LABELS: Record<string, string> = {
+  '/': 'Homepage',
+  '/#about': 'About',
+  '/#services': 'Services',
+  '/#team': 'Team',
+  '/#booking': 'Booking',
+}
+
+function labelForPage(page: string): string {
+  return PAGE_LABELS[page] ?? page
+}
+
 // Ranked list with a proportional bar per row - each bar is relative to the
 // single busiest page in the list, not to the total across all pages.
 export function TopPagesList({ pages, loading }: TopPagesListProps) {
@@ -34,7 +49,7 @@ export function TopPagesList({ pages, loading }: TopPagesListProps) {
               <li key={page.page} className="flex items-center gap-3">
                 <span className="w-5 shrink-0 text-sm font-semibold text-muted-foreground">{index + 1}</span>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-foreground">{page.page}</p>
+                  <p className="truncate text-sm font-medium text-foreground">{labelForPage(page.page)}</p>
                   <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted">
                     <div
                       className="h-full rounded-full bg-primary"
