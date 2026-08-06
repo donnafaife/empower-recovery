@@ -62,7 +62,7 @@ export function Dashboard() {
                 <CardTitle>Top Locations</CardTitle>
               </CardHeader>
               <CardContent>
-                {stats.data?.topLocations.length ? (
+                {stats.data?.topLocations?.length ? (
                   <ul className="space-y-2">
                     {stats.data.topLocations.map((location, index) => (
                       <li key={index} className="flex items-center justify-between gap-3 text-sm">
