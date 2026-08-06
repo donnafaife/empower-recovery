@@ -3,7 +3,7 @@ import { Activity, Eye, Inbox, UserPlus } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/admin/components/ui/card'
 import { Skeleton } from '@/admin/components/ui/skeleton'
 import { EmptyState } from '@/admin/components/shared/EmptyState'
-import { formatRelativeTime } from '@/admin/lib/format'
+import { formatRelativeTime, labelForPage } from '@/admin/lib/format'
 import type { RecentActivity } from '@/admin/types'
 
 interface FeedRow {
@@ -26,7 +26,7 @@ function buildFeed(activity: RecentActivity): FeedRow[] {
     ...activity.pageViews.map((p) => ({
       id: `pageview-${p.id}`,
       icon: Eye,
-      text: `Page view: ${p.page}`,
+      text: labelForPage(p.page),
       createdAt: p.createdAt,
     })),
     ...activity.events.map((e) => ({

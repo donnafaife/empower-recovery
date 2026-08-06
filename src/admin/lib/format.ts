@@ -62,6 +62,21 @@ export function computeDelta(current: number, previous: number): Delta {
   return { value: `${Math.abs(pct).toFixed(1)}%`, positive: pct >= 0 }
 }
 
+// The public site is a single page with anchor-linked sections rather than
+// separate URLs, so raw tracked paths like "/" or "/#services" aren't
+// self-explanatory to a non-technical reader - map them to plain labels.
+const PAGE_LABELS: Record<string, string> = {
+  '/': 'Homepage',
+  '/#about': 'About',
+  '/#services': 'Services',
+  '/#team': 'Team',
+  '/#booking': 'Booking',
+}
+
+export function labelForPage(page: string): string {
+  return PAGE_LABELS[page] ?? page
+}
+
 export function initialsFrom(name: string): string {
   return name
     .split(' ')

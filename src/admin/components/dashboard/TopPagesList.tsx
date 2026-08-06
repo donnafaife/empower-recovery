@@ -1,27 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/admin/components/ui/card'
 import { Skeleton } from '@/admin/components/ui/skeleton'
 import { EmptyState } from '@/admin/components/shared/EmptyState'
-import { formatNumber } from '@/admin/lib/format'
+import { formatNumber, labelForPage } from '@/admin/lib/format'
 import type { TopPage } from '@/admin/types'
 
 interface TopPagesListProps {
   pages?: TopPage[]
   loading?: boolean
-}
-
-// The public site is a single page with anchor-linked sections rather than
-// separate URLs, so raw paths like "/" or "/#services" aren't self-explanatory
-// to a non-technical reader - map them to plain-English labels for display.
-const PAGE_LABELS: Record<string, string> = {
-  '/': 'Homepage',
-  '/#about': 'About',
-  '/#services': 'Services',
-  '/#team': 'Team',
-  '/#booking': 'Booking',
-}
-
-function labelForPage(page: string): string {
-  return PAGE_LABELS[page] ?? page
 }
 
 // Ranked list with a proportional bar per row - each bar is relative to the
