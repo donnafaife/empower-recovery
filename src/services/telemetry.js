@@ -73,6 +73,10 @@ export async function initTelemetry() {
   if (initialized) return
   initialized = true
 
+  // Don't track admin staff using their own dashboard as if they were a
+  // patient visiting the public site - it would skew the Insights numbers.
+  if (window.location.pathname.startsWith('/admin')) return
+
   try {
     let sessionId = sessionStorage.getItem(SESSION_ID_STORAGE)
     if (!sessionId) {
