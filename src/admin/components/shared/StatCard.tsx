@@ -31,10 +31,10 @@ export function StatCard({ label, value, icon: Icon, loading, hint, notAvailable
           <Skeleton className="h-7 w-20" />
         ) : (
           <div className="flex items-baseline gap-2">
-            <p className="text-2xl font-semibold tracking-tight text-foreground">{value}</p>
+            <p className="font-serif text-3xl font-semibold tracking-tight text-foreground">{value}</p>
             {trend ? (
-              <span className={cn('text-xs font-medium', trend.positive ? 'text-success' : 'text-muted-foreground')}>
-                {trend.value}
+              <span className={cn('text-xs font-semibold', trend.positive ? 'text-success' : 'text-destructive')}>
+                {trend.positive ? '▲' : '▼'} {trend.value}
               </span>
             ) : null}
           </div>

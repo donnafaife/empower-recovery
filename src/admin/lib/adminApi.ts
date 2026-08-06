@@ -3,6 +3,7 @@ import type {
   AnalyticsSummary,
   CurrentUserResponse,
   DashboardHealth,
+  DashboardInsights,
   DashboardStats,
   Lead,
   LeadListResponse,
@@ -62,6 +63,15 @@ export function getDashboardHealth(token: string) {
 
 export function getRecentActivity(token: string) {
   return apiGet<RecentActivity>('/api/admin/dashboard/recent-activity', token)
+}
+
+export interface DashboardInsightsParams {
+  dateFrom: string
+  dateTo: string
+}
+
+export function getDashboardInsights(token: string, params: DashboardInsightsParams) {
+  return apiGet<DashboardInsights>(`/api/admin/dashboard/insights${buildQueryString(params)}`, token)
 }
 
 export interface LeadListParams {

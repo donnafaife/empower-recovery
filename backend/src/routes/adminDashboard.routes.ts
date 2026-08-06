@@ -1,6 +1,7 @@
 import { Router } from 'express';
+import { z } from 'zod';
 import { prisma } from '../prisma/client';
-import { successResponse } from '../utils/response';
+import { errorResponse, successResponse } from '../utils/response';
 import { authenticateToken, requireRole } from '../middleware/auth.middleware';
 import { isGeoDatabaseAvailable } from '../utils/geoLookup';
 
@@ -81,6 +82,83 @@ router.get('/stats', authenticateToken, requireRole(['ADMIN', 'SUPER_ADMIN']), a
       ),
     );
   } catch (error) {
+    next(error);
+  }
+});
+
+const insightsQuerySchema = z.object({
+  dateFrom: z.coerce.date(),
+  dateTo: z.coerce.date(),
+});
+
+const TOP_PAGES_LIMIT = 6;
+
+async function computeRangeVisitorStats(dateFrom: Date, dateTo: Date) {
+  const [visitors, visitorGroupsInRange] = await Promise.all([
+    prisma.session.count({ where: { startedAt: { gte: dateFrom, lte: dateTo } } }),
+    prisma.session.groupBy({ by: ['visitorId'], where: { startedAt: { gte: dateFrom, lte: dateTo } } }),
+  ]);
+
+  const visitorIdsInRange = visitorGroupsInRange.map((group) => group.visitorId);
+  const uniqueVisitors = visitorIdsInRange.length;
+
+  // "New" = their very first-ever session (Visitor.createdAt) falls inside
+  // this range. "Returning" is everyone else who visited in range.
+  const newVisitors = visitorIdsInRange.length
+    ? await prisma.visitor.count({
+        where: { id: { in: visitorIdsInRange }, createdAt: { gte: dateFrom, lte: dateTo } },
+      })
+    : 0;
+  const returningVisitors = uniqueVisitors - newVisitors;
+
+  return { visitors, uniqueVisitors, newVisitors, returningVisitors };
+}
+
+// Powers the Insights tab: everything scoped to a caller-chosen date range,
+// unlike /stats above which only covers fixed windows (today/this week/all-time).
+router.get('/insights', authenticateToken, requireRole(['ADMIN', 'SUPER_ADMIN']), async (req, res, next) => {
+  try {
+    const { dateFrom, dateTo } = insightsQuerySchema.parse(req.query);
+
+    // "Prior period" = the same length of time immediately before dateFrom -
+    // what the KPI deltas (this dashboard's "vs prior period") compare against.
+    const rangeMs = dateTo.getTime() - dateFrom.getTime();
+    const previousDateTo = new Date(dateFrom.getTime() - 1);
+    const previousDateFrom = new Date(dateFrom.getTime() - rangeMs);
+
+    const [current, previous, topPageGroups] = await Promise.all([
+      computeRangeVisitorStats(dateFrom, dateTo),
+      computeRangeVisitorStats(previousDateFrom, previousDateTo),
+      prisma.pageView.groupBy({
+        by: ['page'],
+        where: { timestamp: { gte: dateFrom, lte: dateTo } },
+        _count: { page: true },
+        orderBy: { _count: { page: 'desc' } },
+        take: TOP_PAGES_LIMIT,
+      }),
+    ]);
+
+    res.json(
+      successResponse(
+        {
+          visitors: current.visitors,
+          uniqueVisitors: current.uniqueVisitors,
+          newVisitors: current.newVisitors,
+          returningVisitors: current.returningVisitors,
+          previousVisitors: previous.visitors,
+          previousUniqueVisitors: previous.uniqueVisitors,
+          previousNewVisitors: previous.newVisitors,
+          previousReturningVisitors: previous.returningVisitors,
+          topPages: topPageGroups.map((group) => ({ page: group.page, views: group._count.page })),
+        },
+        'Dashboard insights fetched',
+      ),
+    );
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json(errorResponse('Invalid query parameters', error.flatten().fieldErrors));
+      return;
+    }
     next(error);
   }
 });

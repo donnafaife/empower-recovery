@@ -4,23 +4,24 @@
    documentElement) via the custom variant below, so toggling it can never
    affect the public marketing pages. */
 
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f6fbfb;
-  --foreground: #07282b;
-  --card: #ffffff;
-  --card-foreground: #07282b;
-  --popover: #ffffff;
-  --popover-foreground: #07282b;
+  --background: #faf7f0;
+  --foreground: #16302d;
+  --card: #fefdfb;
+  --card-foreground: #16302d;
+  --popover: #fefdfb;
+  --popover-foreground: #16302d;
   --primary: #0b6b63;
-  --primary-foreground: #f6fbfb;
-  --secondary: #edeae3;
-  --secondary-foreground: #07282b;
-  --muted: #eef3f2;
-  --muted-foreground: #556170;
+  --primary-foreground: #faf7f0;
+  --secondary: #eee7d8;
+  --secondary-foreground: #16302d;
+  --muted: #f0ece1;
+  --muted-foreground: #74695c;
   --accent: #b87333;
   --accent-foreground: #ffffff;
   --destructive: #b3261e;
@@ -29,35 +30,35 @@
   --success-foreground: #ffffff;
   --warning: #b87333;
   --warning-foreground: #ffffff;
-  --border: rgba(7, 40, 43, 0.12);
-  --input: rgba(7, 40, 43, 0.18);
+  --border: rgba(69, 58, 38, 0.14);
+  --input: rgba(69, 58, 38, 0.2);
   --ring: #0b6b63;
-  --radius: 0.75rem;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #07282b;
-  --sidebar-border: rgba(7, 40, 43, 0.08);
-  --sidebar-accent: #eef3f2;
-  --sidebar-accent-foreground: #07282b;
-  --chart-1: #0b6b63;
-  --chart-2: #b87333;
+  --radius: 0.875rem;
+  --sidebar: #123330;
+  --sidebar-foreground: #f3ede0;
+  --sidebar-border: rgba(243, 237, 224, 0.08);
+  --sidebar-accent: #1c433f;
+  --sidebar-accent-foreground: #ffffff;
+  --chart-1: #2fae9d;
+  --chart-2: #c9863f;
   --chart-3: #2b5a86;
   --chart-4: #d99150;
-  --chart-5: #556170;
+  --chart-5: #8a8171;
 }
 
 .dark {
-  --background: #12181a;
-  --foreground: #eef3f2;
-  --card: #192124;
-  --card-foreground: #eef3f2;
-  --popover: #192124;
-  --popover-foreground: #eef3f2;
+  --background: #1a1512;
+  --foreground: #f3ede0;
+  --card: #211c17;
+  --card-foreground: #f3ede0;
+  --popover: #211c17;
+  --popover-foreground: #f3ede0;
   --primary: #34b3a4;
   --primary-foreground: #08201d;
-  --secondary: #212a2c;
-  --secondary-foreground: #eef3f2;
-  --muted: #1c2427;
-  --muted-foreground: #93a6a2;
+  --secondary: #2a241d;
+  --secondary-foreground: #f3ede0;
+  --muted: #241f19;
+  --muted-foreground: #ad9d85;
   --accent: #d99150;
   --accent-foreground: #1b1206;
   --destructive: #ef5350;
@@ -66,19 +67,19 @@
   --success-foreground: #08201d;
   --warning: #d99150;
   --warning-foreground: #1b1206;
-  --border: rgba(238, 243, 242, 0.1);
-  --input: rgba(238, 243, 242, 0.16);
+  --border: rgba(243, 237, 224, 0.1);
+  --input: rgba(243, 237, 224, 0.16);
   --ring: #34b3a4;
-  --sidebar: #151b1d;
-  --sidebar-foreground: #eef3f2;
-  --sidebar-border: rgba(238, 243, 242, 0.08);
-  --sidebar-accent: #212a2c;
-  --sidebar-accent-foreground: #eef3f2;
+  --sidebar: #14110d;
+  --sidebar-foreground: #f3ede0;
+  --sidebar-border: rgba(243, 237, 224, 0.08);
+  --sidebar-accent: #241f19;
+  --sidebar-accent-foreground: #f3ede0;
   --chart-1: #34b3a4;
   --chart-2: #d99150;
   --chart-3: #6f9fd1;
   --chart-4: #ffcf7a;
-  --chart-5: #93a6a2;
+  --chart-5: #ad9d85;
 }
 
 @theme inline {
@@ -121,7 +122,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
 
   --animate-in: admin-fade-in 0.2s ease-out;
 }
@@ -178,13 +180,13 @@
 .admin-login-page {
   --admin-primary: #0b6b63;
   --admin-primary-dark: #09524a;
-  --admin-ink: #07282b;
-  --admin-muted: #556170;
-  --admin-border: rgba(7, 40, 43, 0.12);
-  --admin-bg: #f6fbfb;
-  --admin-card-bg: #ffffff;
+  --admin-ink: #16302d;
+  --admin-muted: #74695c;
+  --admin-border: rgba(69, 58, 38, 0.14);
+  --admin-bg: #faf7f0;
+  --admin-card-bg: #fefdfb;
 
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Manrope', system-ui, 'Segoe UI', Roboto, sans-serif;
   color: var(--admin-ink);
   min-height: 100vh;
   background: var(--admin-bg);
@@ -212,7 +214,9 @@
 }
 
 .admin-login-title {
-  font-size: 20px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
   margin: 0 0 8px 0;
   text-align: center;
 }
@@ -360,7 +364,9 @@
 }
 
 .admin-content-title {
-  font-size: 22px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
   margin: 0 0 20px 0;
 }
 

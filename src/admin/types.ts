@@ -116,6 +116,23 @@ export interface RecentActivity {
   leads: RecentActivityLead[]
 }
 
+export interface TopPage {
+  page: string
+  views: number
+}
+
+export interface DashboardInsights {
+  visitors: number
+  uniqueVisitors: number
+  newVisitors: number
+  returningVisitors: number
+  previousVisitors: number
+  previousUniqueVisitors: number
+  previousNewVisitors: number
+  previousReturningVisitors: number
+  topPages: TopPage[]
+}
+
 // ---- adminLeads.routes.ts ----
 
 export interface Pagination {

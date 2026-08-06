@@ -49,6 +49,19 @@ export function formatNumber(value: number | null | undefined): string {
   return new Intl.NumberFormat().format(value)
 }
 
+export interface Delta {
+  value: string
+  positive: boolean
+}
+
+// "vs prior period" comparison shown on Insights KPI cards - a flat 0%
+// when there's no prior-period data to compare against (not a real change).
+export function computeDelta(current: number, previous: number): Delta {
+  if (!previous) return { value: '0%', positive: true }
+  const pct = ((current - previous) / previous) * 100
+  return { value: `${Math.abs(pct).toFixed(1)}%`, positive: pct >= 0 }
+}
+
 export function initialsFrom(name: string): string {
   return name
     .split(' ')
