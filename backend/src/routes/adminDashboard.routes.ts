@@ -10,6 +10,7 @@ const router = Router();
 const DASHBOARD_TIMEZONE = 'America/Chicago';
 const ACTIVE_SESSION_WINDOW_MINUTES = 30;
 const TELEMETRY_STALE_HOURS = 24;
+const TOP_LOCATIONS_LIMIT = 5;
 
 // How far ahead (in ms) `timeZone`'s wall clock is vs UTC, evaluated at
 // `date` - so it reflects whichever DST offset is in effect then.
@@ -50,21 +51,40 @@ router.get('/stats', authenticateToken, requireRole(['ADMIN', 'SUPER_ADMIN']), a
     const weekStart = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     const activeSince = new Date(Date.now() - ACTIVE_SESSION_WINDOW_MINUTES * 60 * 1000);
 
-    const [visitorsTodayGroups, visitorsWeekGroups, returningVisitorGroups, activeSessions, totalPageViews, totalEvents, totalLeads, newLeads] =
-      await Promise.all([
-        prisma.session.groupBy({ by: ['visitorId'], where: { startedAt: { gte: todayStart } } }),
-        prisma.session.groupBy({ by: ['visitorId'], where: { startedAt: { gte: weekStart } } }),
-        prisma.session.groupBy({
-          by: ['visitorId'],
-          _count: { visitorId: true },
-          having: { visitorId: { _count: { gt: 1 } } },
-        }),
-        prisma.session.count({ where: { endedAt: null, startedAt: { gte: activeSince } } }),
-        prisma.pageView.count(),
-        prisma.event.count(),
-        prisma.lead.count(),
-        prisma.lead.count({ where: { status: 'NEW' } }),
-      ]);
+    const [
+      visitorsTodayGroups,
+      visitorsWeekGroups,
+      returningVisitorGroups,
+      activeSessions,
+      totalPageViews,
+      totalEvents,
+      topLocationGroups,
+    ] = await Promise.all([
+      prisma.session.groupBy({ by: ['visitorId'], where: { startedAt: { gte: todayStart } } }),
+      prisma.session.groupBy({ by: ['visitorId'], where: { startedAt: { gte: weekStart } } }),
+      prisma.session.groupBy({
+        by: ['visitorId'],
+        _count: { visitorId: true },
+        having: { visitorId: { _count: { gt: 1 } } },
+      }),
+      prisma.session.count({ where: { endedAt: null, startedAt: { gte: activeSince } } }),
+      prisma.pageView.count(),
+      prisma.event.count(),
+      // All-time, not scoped to today/this week like the counts above -
+      // where visitors have come from historically changes slowly.
+      prisma.visitor.groupBy({
+        by: ['country', 'city'],
+        _count: { id: true },
+        orderBy: { _count: { id: 'desc' } },
+        take: TOP_LOCATIONS_LIMIT,
+      }),
+    ]);
+
+    const topLocations = topLocationGroups.map((group) => ({
+      country: group.country,
+      city: group.city,
+      visitors: group._count.id,
+    }));
 
     res.json(
       successResponse(
@@ -75,8 +95,7 @@ router.get('/stats', authenticateToken, requireRole(['ADMIN', 'SUPER_ADMIN']), a
           activeSessions,
           totalPageViews,
           totalEvents,
-          totalLeads,
-          newLeads,
+          topLocations,
         },
         'Dashboard stats fetched',
       ),

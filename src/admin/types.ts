@@ -50,6 +50,12 @@ export interface AdminUserListItem {
 
 // ---- adminDashboard.routes.ts ----
 
+export interface TopLocation {
+  country: string | null
+  city: string | null
+  visitors: number
+}
+
 export interface DashboardStats {
   visitorsToday: number
   visitorsThisWeek: number
@@ -57,8 +63,7 @@ export interface DashboardStats {
   activeSessions: number
   totalPageViews: number
   totalEvents: number
-  totalLeads: number
-  newLeads: number
+  topLocations: TopLocation[]
 }
 
 export type HealthStatus = 'healthy' | 'warning' | 'error'

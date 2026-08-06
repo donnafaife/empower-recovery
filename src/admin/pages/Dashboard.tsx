@@ -9,7 +9,7 @@ import { InsightsPanel } from '@/admin/components/dashboard/InsightsPanel'
 import { useApiQuery } from '@/admin/hooks/useApiQuery'
 import { useAuth } from '@/admin/hooks/useAuth'
 import { getDashboardInsights, getDashboardStats, getRecentActivity } from '@/admin/lib/adminApi'
-import { formatNumber } from '@/admin/lib/format'
+import { formatLocation, formatNumber } from '@/admin/lib/format'
 import { currentMonthRange } from '@/admin/lib/dateRange'
 
 export function Dashboard() {
@@ -35,7 +35,7 @@ export function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title="Dashboard" description="Overview of visitor activity and lead volume." />
+      <PageHeader title="Dashboard" description="Overview of visitor activity and where visitors are coming from." />
 
       <Tabs defaultValue="overview">
         <TabsList>
@@ -59,19 +59,25 @@ export function Dashboard() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Leads</CardTitle>
+                <CardTitle>Top Locations</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <p className="text-lg font-semibold text-foreground">{formatNumber(stats.data?.totalLeads)}</p>
-                    <p className="text-xs text-muted-foreground">Total leads</p>
-                  </div>
-                  <div>
-                    <p className="text-lg font-semibold text-foreground">{formatNumber(stats.data?.newLeads)}</p>
-                    <p className="text-xs text-muted-foreground">New leads</p>
-                  </div>
-                </div>
+                {stats.data?.topLocations.length ? (
+                  <ul className="space-y-2">
+                    {stats.data.topLocations.map((location, index) => (
+                      <li key={index} className="flex items-center justify-between gap-3 text-sm">
+                        <span className="truncate text-foreground">
+                          {formatLocation(location.city, undefined, location.country)}
+                        </span>
+                        <span className="shrink-0 font-semibold text-foreground">
+                          {formatNumber(location.visitors)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-xs text-muted-foreground">No visitor location data yet</p>
+                )}
               </CardContent>
             </Card>
           </div>
